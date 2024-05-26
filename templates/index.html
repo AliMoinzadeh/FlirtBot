@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>FlirtBot</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>FlirtBot</h1>
+        <p>Enter text here:</p>
+        <textarea id="chatField"></textarea>
+        <br/>
+        <button id="getSample">Random stuff</button>
+        <button id="getResponse">Chat</button>
+        <br/>
+        <button id="reset">Reset memory</button>
+        <button id="loadFromMemory">Load memory</button>
+        <button id="loadFromFile">Load from file</button>
+        <p id="filenameLabel">Filename:</p><input id="filenameField"></input>
+        <br/>
+        <p id="responseLabel">FlirtBot Response:</p>
+        <p id="backendResponse">Backend response will appear here</p>
+        <br/>
+        <p id="chatHistoryLabel:">Chat History:</p>
+        <div id="chatHistory">
+        </div>
+
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </body>
+</html>
