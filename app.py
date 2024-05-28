@@ -42,7 +42,7 @@ def initGlobals():
     global chat
     global output_parser
     
-    chat = ChatOpenAI(model="gpt-4-turbo", temperature=0.9)
+    chat = ChatOpenAI(model="gpt-4o", temperature=0.9)
     output_parser = StrOutputParser()
     # chat_history = ChatMessageHistory()
     loader = DirectoryLoader('data/', glob='**/*.txt', loader_cls=TextLoader)
