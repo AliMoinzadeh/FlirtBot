@@ -3,9 +3,7 @@ import openai
 import dotenv
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
-from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain.memory import ChatMessageHistory
 
 dotenv.load_dotenv()
@@ -15,7 +13,7 @@ llm = ChatOpenAI(model="gpt-4", temperature=0.9)
 
 output_parser = StrOutputParser()
 
-# Initialisieren des Chains mit Message Liste
+# Initialisieren des Prompt Templates mit System und Message Liste
 prompt = ChatPromptTemplate.from_messages(
     [
         (
@@ -26,6 +24,7 @@ prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
+# Initialisieren des Chains
 chain = prompt | llm | output_parser
 
 # Initialisieren der Chat Historie
