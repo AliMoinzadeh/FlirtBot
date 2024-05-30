@@ -39,3 +39,8 @@ Future goals:
   - pip install langchain
   - pip install langchain-openai
   - pip install dotenv
+
+# Running application:
+- Run command in terminal:
+  - streamlit run app.py
+- Run program in vscode with lauch config "Python: Streamlit"
