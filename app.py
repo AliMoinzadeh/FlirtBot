@@ -306,8 +306,8 @@ def main():
 if __name__ == '__main__':
     main()
 
-if not hasattr(st, 'already_started_server'):
+# if not hasattr(st, 'already_started_server'):
     # Hack the fact that Python modules (like st) only load once to
     # keep track of whether this file already ran.
-    st.already_started_server = True
-    server_app.run(port=5000)
+    # st.already_started_server = True
+    # server_app.run(port=5000)
