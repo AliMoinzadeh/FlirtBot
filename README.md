@@ -38,7 +38,9 @@ Future goals:
   - pip install openai
   - pip install langchain
   - pip install langchain-openai
-  - pip install dotenv
+  - pip install python-dotenv
+- or use requirements file:
+  - pip install -r .\requirements.txt
 
 # Running application:
 - Run command in terminal:

@@ -1,0 +1,9 @@
+  openai
+  langchain
+  langchain-openai
+  langchain_community
+  python-dotenv
+  streamlit
+  streamlit_chat
+  flask
+  flask_cors
