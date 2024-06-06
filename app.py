@@ -166,6 +166,13 @@ def clearChatHistoryInSession():
 def setChatHistoryInSession(chat_history):
     st.session_state['chat_history'] = chat_history
 
+def setBotBehaviorInSession(botHavior):
+    st.session_state.currentBotBehavior = botHavior
+
+def setUserNameInSession(userName):
+    st.session_state.userName = userName
+
+
 def getLangChainMessageForUser(user, content):
     if user == 'Bot':
         return AIMessage(content=content)
@@ -206,6 +213,17 @@ def load_json_from_documents(
         history_docs = docs
     return [json.loads(doc.page_content) for doc in history_docs]
 
+def load_json(filename) -> List[str]:
+    if(filename is None or filename == ""):
+        filename = "data/chat.json"
+    if(not filename.startswith("data/")):
+        filename = "data/" + filename
+    if(not filename.endswith(".json")):
+        filename = filename + ".json"
+    loader = TextLoader(filename, encoding='utf-8')
+    docs = loader.load()
+    return [json.loads(doc.page_content) for doc in docs]
+
 def load_and_parse_chat_history_from_json(
         file_path: str = 'data/chat.json'):
     loader = JSONLoader(file_path=file_path)
@@ -240,14 +258,17 @@ def on_load_chat_from_file_btn_click():
         filename = "chat.json"
     if(filename.startswith("data/")):
         filename = filename.removeprefix("data/")
-    jsonDocs = load_json_from_documents("data", "**/*.json", filename)
-    firstJson = jsonDocs[0]
-    chat_history = firstJson['chat_history']
-    setChatHistoryInSession(chat_history)
+    # jsonDocs = load_json_from_documents("data", "**/*.json", filename)
+    # firstJson = jsonDocs[0]
+    firstJson = load_json(filename)[0]
+    setChatHistoryInSession(firstJson['chat_history'])
+    setBotBehaviorInSession(firstJson['botBehavior'])
+    setUserNameInSession(firstJson['userName'])
 
 def on_save_to_file_btn_click():
     content = {
         "botBehavior": st.session_state.currentBotBehavior,
+        "userName": st.session_state.userName,
         "chat_history": getChatHistoryFromSession(),
     }
     filename = st.session_state.filename

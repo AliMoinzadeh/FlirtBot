@@ -1,5 +1,6 @@
 {
-  "botBehavior": "Wie entscheidet das Publikum?.\n",
+  "botBehavior": "Wie entscheidet das Publikum?",
+  "userName": "Ali",
   "chat_history": {
     "messages": []
   }
